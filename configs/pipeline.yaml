@@ -1,0 +1,29 @@
+# Unified Configuration for custom-GNN-LLM-VLM Pipeline
+
+flights:
+  base_ids: ["h1", "h2", "h3", "h4", "h5"]
+  fused_pairs: ["h1_h2", "h1_h3", "h1_h4", "h1_h5"]
+  data_dir: "data/sample_graphs"
+
+gnn:
+  hidden_channels: 16
+  out_channels: 8
+  learning_rate: 0.01
+  epochs: 100
+  physics_penalty_weight: 0.1
+  window_size: 5
+  adjacency_threshold: 100.0
+
+bridge:
+  backbone_model_id: "Qwen/Qwen2.5-7B-Instruct"
+  projector_input_dim: 4
+  num_soft_tokens: 2
+  max_new_tokens: 400
+
+edge:
+  yolo_model_path: "checkpoints/best.pt"
+  conf_threshold: 0.35
+  iou_threshold: 0.45
+  trail_length: 30
+  udp_ip: "127.0.0.1"
+  udp_port: 5005
