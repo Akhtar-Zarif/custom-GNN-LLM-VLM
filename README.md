@@ -97,8 +97,12 @@ python src/bridge/gnn_server_live.py --data-dir data/sample_graphs --port 5005
 
 ## Hugging Face Hub Integration
 
-Large model weights, checkpoints, and full multi-flight graph datasets are hosted on Hugging Face Hub:
-- **Hugging Face Profile:** `https://huggingface.co/zarifbinakhtar`
+Model checkpoints, multi-flight (`h1`–`h5` and fused pairs) graph CSVs, and diagnostic artifacts are hosted at:
+- **Hugging Face Repository:** `https://huggingface.co/zarifbinakhtar/custom-GNN-LLM-VLM`
+
+Example download using `huggingface_hub`:
+```bash
+python -c "from huggingface_hub import hf_hub_download; print(hf_hub_download(repo_id='zarifbinakhtar/custom-GNN-LLM-VLM', filename='checkpoints/best.pt'))"
 
 ## Citation
 
