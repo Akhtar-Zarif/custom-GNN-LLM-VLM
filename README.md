@@ -104,6 +104,29 @@ Example download using `huggingface_hub`:
 ```bash
 python -c "from huggingface_hub import hf_hub_download; print(hf_hub_download(repo_id='zarifbinakhtar/custom-GNN-LLM-VLM', filename='checkpoints/best.pt'))"
 
+```
+## Hugging Face Research Baseline & Post-Training Artifacts
+
+The reproducible baseline, evaluation CSVs, continual-learning replay results, and post-trained projector weights for this project are published on Hugging Face:
+
+- **Repository:** [`zarifbinakhtar/custom-GNN-LLM-VLM_drone_telemetry_hf_baseline`](https://huggingface.co/zarifbinakhtar/custom-GNN-LLM-VLM_drone_telemetry_hf_baseline)
+- **Hardware & Precision:** Intel Core Ultra 9 275HX, 32 GB RAM, NVIDIA RTX 5070 Laptop GPU (4-bit NF4 quantization on `Qwen/Qwen2.5-7B-Instruct` and `Qwen/Qwen2.5-VL-7B-Instruct`)
+- **Dataset Split:** 85 windows across 9 telemetry sources (`h1`–`h5` single-flight and `h1_h2`–`h1_h5` fused-pair regimes), split into 63 training and 22 validation samples (`seed=42`, blind-frame rendering without title label leakage)
+
+### Summary of Benchmark & Post-Training Results
+
+| Experiment / Stage | Evaluation Set | Diagnostic Acc (%) | Numeric MAE | JSON Schema Pass (%) | Avg Latency (ms) | Notes |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| `text_only_llm` | `val.jsonl` (`n=22`) | 0.00 | 0.0002 | 100.0 | 4765.43 | Zero-shot 4-bit LLM baseline |
+| `gnn_soft_token_llm` | `val.jsonl` (`n=22`) | 0.00 | 0.0002 | 100.0 | 7311.04 | Zero-shot 4-bit LLM + soft tokens |
+| `vlm_gnn_soft_tokens` | `val.jsonl` (`n=22`, titled) | 68.18 | 0.0002 | 100.0 | 3913.91 | Includes ground-truth plot title tags |
+| `zero_shot_blind` | `val.jsonl` (`n=22`, blind) | 45.45 | 0.0002 | 100.0 | 2166.97–2215.10 | Blind frames remove title leakage |
+| `post_trained_blind` (Projector, 3 ep) | `val.jsonl` (`n=22`, blind) | 45.45 | 0.0002 | 100.0 | 2033.01 | Loss: `0.1726` -> `0.1424` -> `0.1179` (`0` NaNs) |
+| `post_trained_blind` (LoRA `r=8` + Proj, 3 ep) | `val.jsonl` (`n=22`, blind) | 40.91 | 0.0003 | 100.0 | 2164.21 | Loss: `0.5518` -> `0.2813` -> `0.1500` (`0` NaNs) |
+
+- **Sequential Continual Learning (`h1`–`h5`):** Experience replay increased final accuracy from **85.33%** to **92.00%** and shifted forgetting from **+8.33 pp** to **-8.33 pp** (`results/continual_h1_h5.csv` and `results/forgetting_h1_h5.png`).
+```
+
 ## Citation
 
 If you use this codebase in your research, please cite it using the included `CITATION.cff` file.
