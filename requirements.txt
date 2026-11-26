@@ -1,0 +1,14 @@
+torch
+torchvision
+torch-geometric
+transformers
+accelerate
+huggingface_hub
+ultralytics
+depthai
+opencv-python
+pandas
+numpy
+networkx
+matplotlib
+pyyaml

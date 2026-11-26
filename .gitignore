@@ -1,0 +1,36 @@
+# Python & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+build/
+dist/
+
+# Model weights, YOLO runs & large artifacts (host on Hugging Face instead)
+runs/
+checkpoints/*
+!checkpoints/.gitkeep
+weights/
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.onnx
+*.engine
+*.blob
+
+# Large datasets & caches
+data/sample_graphs/*.csv
+!data/sample_graphs/.gitkeep
+*.parquet
+.cache/
+huggingface/
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

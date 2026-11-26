@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software or architecture in your research, please cite it as below."
+title: "Custom GNN-LLM-VLM Framework for Multi-Flight Telemetry and Edge Diagnostics"
+type: software
+authors:
+  - family-names: "Akhtar"
+    given-names: "Zarif Bin"
+repository-code: "https://github.com/Akhtar-Zarif/custom-GNN-LLM-VLM"
+keywords:
+  - "Graph Neural Networks"
+  - "Physics-Informed GNN"
+  - "Large Language Models"
+  - "Vision-Language Models"
+  - "Edge Deployment"
+  - "OAK-1"
+  - "UAV Telemetry"
