@@ -1,6 +1,6 @@
 # Custom GNN–LLM–VLM Framework for Multi-Flight Telemetry & Edge Diagnostics
 
-Joint Doctorate research repository integrating **real-time edge vision & telemetry streaming (OAK-1 / YOLO / KLT)**, **multi-flight (`h1`–`h5`) and pairwise-fused (`h1_h2`–`h1_h5`) Physics-Informed Graph Neural Networks (PI-GNN)**, and **Graph-to-LLM/VLM soft-token projection** (`SpatialGraphProjector` / `MATLABGraphProjector` + `Qwen/Qwen2.5-7B-Instruct`) for autonomous UAV flight state reasoning and diagnostics.
+Custom GNN-LLM-VLM research repository integrating **real-time edge vision & telemetry streaming (OAK-1 / YOLO / KLT)**, **multi-flight (`h1`–`h5`) and pairwise-fused (`h1_h2`–`h1_h5`) Physics-Informed Graph Neural Networks (PI-GNN)**, and **Graph-to-LLM/VLM soft-token projection** (`SpatialGraphProjector` / `MATLABGraphProjector` + `Qwen/Qwen2.5-7B-Instruct`) for autonomous UAV flight state reasoning and diagnostics.
 
 ## Repository Structure
 
